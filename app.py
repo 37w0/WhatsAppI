@@ -43,7 +43,7 @@ def add_message_log(text_message):
 #add_message_log(json.dumps("Prueba 1 de mensaje PY"))
 
 #Token de verificacion para la configuracion del webhook de Meta WhatsApp
-TOKENAPP='DONKEY!'
+TOKENAPP='DONKEY'
 @app.route('/webhook',methods=['GET','POST'])
 def webhook():
     if request.method=='GET':
@@ -58,7 +58,7 @@ def verifyToken(request):
         if token and challenge == TOKENAPP:
             return challenge
         else:
-            return jsonify({'error': 'Token de verificación inválido'}), 401
+            return jsonify({'error': 'Token invalido'}), 401
 
 def receiveMessage(request):
     req = request.get_json()
