@@ -6,7 +6,7 @@ import json
 app=Flask(__name__)
 
 # Configuración de la base de datos SQLite
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///Support.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db=SQLAlchemy(app)
 
@@ -19,13 +19,6 @@ class Log(db.Model):
 #Crear la bd si no existe
 with app.app_context():
     db.create_all()
-
-    # prueba1 = Log(text_message="Primer mensaje de prueba")
-    # prueba2 = Log(text_message="Segundo mensaje de prueba")
-
-    # db.session.add(prueba1)
-    # db.session.add(prueba2)
-    # db.session.commit()
 
 
 def order_rows_by_datetime(rows):
@@ -42,15 +35,14 @@ messages_log=[]
 
 #Funcion para agregar mensajes al log y guardarlos en la base de datos
 def add_message_log(text_message):
+    messages_log.append(text_message)
+    
     new_log=Log(text_message=text_message)
     db.session.add(new_log)
     db.session.commit()
-    messages_log.append(text_message)
-
-#add_message_log(json.dumps("Prueba 1 de mensaje PY"))
-
+    
 #Token de verificacion para la configuracion del webhook de Meta WhatsApp
-TOKENAPP='DONKEY_Mykey_12345'
+TOKENAPP='MyTokenApp'
 
 @app.route('/webhook',methods=['GET','POST'])
 def webhook():
@@ -67,7 +59,7 @@ def verifyToken(req):
         if token and challenge == TOKENAPP:
             return challenge
         else:
-            return jsonify({'error': 'Token invalido'}), 401
+            return jsonify({'error': 'Token invalido'}), 404
 
 def receiveMessage(req):
     req = request.get_json()
