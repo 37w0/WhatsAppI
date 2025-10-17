@@ -20,6 +20,13 @@ class Log(db.Model):
 with app.app_context():
     db.create_all()
 
+    # prueba1 = Log(text_message="Primer mensaje de prueba")
+    # prueba2 = Log(text_message="Segundo mensaje de prueba")
+
+    # db.session.add(prueba1)
+    # db.session.add(prueba2)
+    # db.session.commit()
+
 
 def order_rows_by_datetime(rows):
     return sorted(rows, key=lambda row: row.date_time, reverse=True)
@@ -43,7 +50,8 @@ def add_message_log(text_message):
 #add_message_log(json.dumps("Prueba 1 de mensaje PY"))
 
 #Token de verificacion para la configuracion del webhook de Meta WhatsApp
-TOKENAPP='DONKEY'
+TOKENAPP='DONKEY_Mykey_12345'
+
 @app.route('/webhook',methods=['GET','POST'])
 def webhook():
     if request.method=='GET':
@@ -51,34 +59,21 @@ def webhook():
         return challenge
     elif request.method=='POST':
         response=receiveMessage(request)
+        return response
 
-def verifyToken(request):
-        token = request.args.get('hub.verify_token')
-        challenge = request.args.get('hub.challenge')
+def verifyToken(req):
+        token = req.args.get('hub.verify_token')
+        challenge = req.args.get('hub.challenge')
         if token and challenge == TOKENAPP:
             return challenge
         else:
             return jsonify({'error': 'Token invalido'}), 401
 
-def receiveMessage(request):
+def receiveMessage(req):
     req = request.get_json()
     add_message_log(json.dumps(request.json))
-    return jsonify({'status': 'EVENT_RECEIVED'}), 200
+    return jsonify({'message': 'EVENT_RECEIVED'}), 200
 
-    #    return 'Token de verificación inválido'
-    # if request.method=='GET':
-    #     if request.args.get('hub.verify_token')==TOKENAPP:
-    #         return request.args.get('hub.challenge')
-    #     return 'Token de verificación inválido'
-    # if request.method=='POST':
-    #     data=request.json
-    #     print(json.dumps(data,indent=4))
-    #     try:
-    #         text_message=data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-    #         add_message_log(text_message)
-    #     except:
-    #         pass
-    #     return 'EVENT_RECEIVED'
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
