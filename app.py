@@ -20,7 +20,6 @@ class Log(db.Model):
 with app.app_context():
     db.create_all()
 
-
 def order_rows_by_datetime(rows):
     return sorted(rows, key=lambda row: row.date_time, reverse=True)
 
@@ -50,18 +49,18 @@ def webhook():
         challenge=verifyToken(request)
         return challenge
     elif request.method=='POST':
-        response=receiveMessage(request)
-        return response
+        reponse=receiveMessage(request)
+        return reponse
 
 def verifyToken(req):
         token = req.args.get('hub.verify_token')
         challenge = req.args.get('hub.challenge')
         #print(f"Token recibido: {token}, Challenge recibido: {challenge}")
 
-        if token and challenge == TOKENAPP:
+        if challenge and token == TOKENAPP:
             return challenge
         else:
-            return jsonify({'error': 'Token invalido'}), 404
+            return jsonify({'error': 'Token invalido'}), 401
 
 def receiveMessage(req):
     req = request.get_json()
