@@ -56,6 +56,8 @@ def webhook():
 def verifyToken(req):
         token = req.args.get('hub.verify_token')
         challenge = req.args.get('hub.challenge')
+        print(f"Token recibido: {token}, Challenge recibido: {challenge}")
+
         if token and challenge == TOKENAPP:
             return challenge
         else:
