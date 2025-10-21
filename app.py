@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
+import http.client
 
 app=Flask(__name__)
 
@@ -64,7 +65,7 @@ def verifyToken(req):
 
 def receiveMessage(req):
     req = request.get_json()
-    add_message_log(json.dumps(request.json))
+    # add_message_log(json.dumps(request.json))
 
     try:
         req = request.get_json()
@@ -81,6 +82,8 @@ def receiveMessage(req):
 
                 if message_type == 'interactive':
                     return 0
+                
+
                 if "text" in messages:
                     text_message = messages['text']['body']
                     from_number = messages['from']
@@ -103,6 +106,46 @@ def receiveMessage(req):
     except Exception as e:
         return jsonify({'message': 'EVENT_RECEIVED'}), 200
 
+def send_message_whatsapp(txt_message, to_number):
+    txt_message=txt_message.lower()
+
+    if 'hola' in txt_message:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": to_number,
+            "text": {
+                "body": "¡Hola! ¿En qué puedo ayudarte hoy?"
+            }
+        }
+    else:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": to_number,
+            "text": {
+                "body": "Lo siento, no entiendo tu mensaje. ¿Podrías reformularlo?"
+            }
+        }
+    data = json.dumps(data)
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer EAAkZAQZCGei9QBP58eL5VQSsuJQSpGJqqlpLXyUIcMaCBOTOchXepUi5d86niDHNMzLwPRwmgo03yK7qiEDNTLYHHuj0fAxOHwrPQH0MZAmdha28hraRKk8hmPVaH3CFZAjtoSu1mwNLKK86uPCILDlArorkX3be2FBQN1ghtULZA2ChnnLKySlgzZBrjsLAm8EOgTovxEp9EY1BVyuuRt4vtOEEKFJ5QZAC597qmhwEous'
+    }
+
+    connection = http.client.HTTPSConnection('graph.facebook.com')
+
+    try:
+        connection.request('POST', '/v22.0/827599870434160/messages', body=data, headers=headers)
+        response = connection.getresponse()
+        # response_data = response.read()
+        print("Response status: {response.status},{response.reason}")
+        #print(f"Response data: {response_data.decode('utf-8')}")
+
+    except Exception as e:
+        add_message_log(f"Error sending message: {str(json.dumps(e))}")
+
+    finally
+        connection.close()
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
