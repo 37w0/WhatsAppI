@@ -103,21 +103,23 @@ def sand_message_whatsapp(txt_message, to_number):
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
-            "to": to_number,
+            "to": "525515067163",
             "type": "text",
             "text": {
-                "body": "¡Hola! ¿En qué puedo ayudarte hoy?"
-            }
+                "preview_url": True,
+                "body": "Respuesta automatica: Hola, ¿en qué puedo ayudarte?"
+                }
         }
     else:
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
-            "to": to_number,
+            "to": "525515067163",
             "type": "text",
             "text": {
-                "body": "Lo siento, no entiendo tu mensaje. ¿Podrías reformularlo?"
-            }
+                "preview_url": True,
+                "body": "Respuesta automatica: Gracias por tu mensaje. Te responderemos pronto."
+                }
         }
 
     data = json.dumps(data)
