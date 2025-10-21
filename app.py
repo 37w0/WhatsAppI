@@ -65,7 +65,19 @@ def verifyToken(req):
 def receiveMessage(req):
     req = request.get_json()
     add_message_log(json.dumps(request.json))
-    return jsonify({'message': 'EVENT_RECEIVED'}), 200
+
+    try:
+        req = request.get_json()
+        entry = req['entry'][0]
+        changes = entry['changes'][0]
+        value = changes['value']
+        obj_message = value['messages']
+
+        add_message_log(obj_message)
+
+        return jsonify({'message': 'EVENT_RECEIVED'}), 200
+    except Exception as e:
+        return jsonify({'message': 'EVENT_RECEIVED'}), 200
 
 
 if __name__=='__main__':
