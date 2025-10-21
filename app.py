@@ -86,7 +86,7 @@ def receiveMessage(req):
                     text_message = messages["text"]["body"]
                     from_number = messages["from"]
 
-                    send_message_whatsapp(text_message, from_number)
+                    sand_message_whatsapp(text_message, from_number)
                     add_message_log(json.dumps(text_message))
                     add_message_log(json.dumps(from_number))
 
@@ -96,7 +96,7 @@ def receiveMessage(req):
     except Exception as e:
         return jsonify({'message': 'EVENT_RECEIVED'}), 200
 
-def send_message_whatsapp(txt_message, to_number):
+def sand_message_whatsapp(txt_message, to_number):
     txt_message=txt_message.lower()
 
     if "hola" in txt_message:
