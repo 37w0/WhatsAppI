@@ -78,18 +78,18 @@ def receiveMessage(req):
             messages = obj_message[0]
 
             if "type" in messages:
-                message_type = messages['type']
+                message_type = messages["type"]
 
-                if message_type == 'interactive':
+                if message_type == "interactive":
                     return 0
                 
-
                 if "text" in messages:
-                    text_message = messages['text']['body']
-                    from_number = messages['from']
-                    
+                    text_message = messages["text"]["body"]
+                    from_number = messages["from"]
+
                     send_message_whatsapp(text_message, from_number)
-  
+
+                    add_message_log(json.dumps(messages))
 
         return jsonify({'message': 'EVENT_RECEIVED'}), 200
     except Exception as e:
