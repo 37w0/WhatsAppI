@@ -77,6 +77,8 @@ def receiveMessage(req):
             if "type" in messages:
                 message_type = messages["type"]
 
+                add_message_log(json.dumps(messages))
+
                 if message_type == "interactive":
                     return 0
                 
@@ -85,6 +87,8 @@ def receiveMessage(req):
                     from_number = messages["from"]
 
                     send_message_whatsapp(text_message, from_number)
+                    add_message_log(json.dumps(text_message))
+                    add_message_log(json.dumps(from_number))
 
                     add_message_log(json.dumps(messages))
 
