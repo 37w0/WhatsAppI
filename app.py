@@ -144,7 +144,7 @@ def send_message_whatsapp(txt_message, to_number):
     except Exception as e:
         add_message_log(f"Error sending message: {str(json.dumps(e))}")
 
-    finally
+    finally:
         connection.close()
 
 if __name__=='__main__':
