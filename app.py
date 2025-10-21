@@ -85,10 +85,11 @@ def receiveMessage(req):
                 if "text" in messages:
                     text_message = messages["text"]["body"]
                     from_number = messages["from"]
+                    from_number = from_number.replace("521", "+52")
 
                     sand_message_whatsapp(text_message, from_number)
-                    add_message_log(json.dumps(text_message))
-                    add_message_log(json.dumps(from_number))
+                    # add_message_log(json.dumps(text_message))
+                    # add_message_log(json.dumps(from_number))
 
                     add_message_log(json.dumps(messages))
 
@@ -132,7 +133,7 @@ def sand_message_whatsapp(txt_message, to_number):
     connection = http.client.HTTPSConnection("graph.facebook.com")
 
     try:
-        connection.request("POST", "/v23.0/827599870434160/messages", data, headers)
+        connection.request("POST", "/v24.0/827599870434160/messages", data, headers)
         response = connection.getresponse()
         print(response.status,response.reason)
     except Exception as e:
