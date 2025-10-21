@@ -126,21 +126,19 @@ def send_message_whatsapp(txt_message, to_number):
     data = json.dumps(data)
 
     headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer EAAkZAQZCGei9QBP4uwfv9rGgPk8mrkit7AxX1bBIZB4bQ3HInznU6tQGIPf565FVa7xHvnTerTr6CYiZCURiGZBwCY6byFSF4ADUxQxB9ZBqNB8Khu9ZC2AU1hwlJpyx5H3MzixVIO5faOHBBsl4C9zRIlvwkad7TN0xFnnc5O2tl7aYS3Wt6BkmFiLskmqDnnlOhZC0dUDcaUOJEuR9NCLZA1v3CAzvrGMB6LB1eayuEWcPB'
+        "Content-Type": "application/json",
+        "Authorization": "Bearer EAAkZAQZCGei9QBP4uwfv9rGgPk8mrkit7AxX1bBIZB4bQ3HInznU6tQGIPf565FVa7xHvnTerTr6CYiZCURiGZBwCY6byFSF4ADUxQxB9ZBqNB8Khu9ZC2AU1hwlJpyx5H3MzixVIO5faOHBBsl4C9zRIlvwkad7TN0xFnnc5O2tl7aYS3Wt6BkmFiLskmqDnnlOhZC0dUDcaUOJEuR9NCLZA1v3CAzvrGMB6LB1eayuEWcPB"
     }
 
-    connection = http.client.HTTPSConnection('graph.facebook.com')
+    connection = http.client.HTTPSConnection("graph.facebook.com")
 
     try:
-        connection.request('POST', '/v22.0/827599870434160/messages', body=data, headers=headers)
+        connection.request("POST", "/v24.0/827599870434160/messages", data, headers)
         response = connection.getresponse()
-        # response_data = response.read()
-        print("Response status: {response.status},{response.reason}")
-        #print(f"Response data: {response_data.decode('utf-8')}")
+        print(response.status,response.reason)
 
     except Exception as e:
-        add_message_log(f"Error sending message: {str(json.dumps(e))}")
+        add_message_log((json.dumps(e)))
 
     finally:
         connection.close()
