@@ -87,9 +87,7 @@ def receiveMessage(req):
                 if "text" in messages:
                     text_message = messages['text']['body']
                     from_number = messages['from']
-
-                    add_message_log(json.dumps(text_message))
-                    add_message_log(json.dumps(from_number))
+                    
                     send_message_whatsapp(text_message, from_number)
   
 
@@ -100,9 +98,10 @@ def receiveMessage(req):
 def send_message_whatsapp(txt_message, to_number):
     txt_message=txt_message.lower()
 
-    if 'hola' in txt_message:
+    if "hola" in txt_message:
         data = {
             "messaging_product": "whatsapp",
+            "recipient_type": "individual",
             "to": to_number,
             "type": "text",
             "text": {
@@ -112,6 +111,7 @@ def send_message_whatsapp(txt_message, to_number):
     else:
         data = {
             "messaging_product": "whatsapp",
+            "recipient_type": "individual",
             "to": to_number,
             "type": "text",
             "text": {
@@ -132,10 +132,8 @@ def send_message_whatsapp(txt_message, to_number):
         connection.request("POST", "/v24.0/827599870434160/messages", data, headers)
         response = connection.getresponse()
         print(response.status,response.reason)
-
     except Exception as e:
         add_message_log(json.dumps(e))
-
     finally:
         connection.close()
 
