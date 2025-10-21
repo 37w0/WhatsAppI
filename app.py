@@ -111,6 +111,7 @@ def send_message_whatsapp(txt_message, to_number):
         data = {
             "messaging_product": "whatsapp",
             "to": to_number,
+            "type": "text",
             "text": {
                 "body": "¡Hola! ¿En qué puedo ayudarte hoy?"
             }
@@ -119,10 +120,12 @@ def send_message_whatsapp(txt_message, to_number):
         data = {
             "messaging_product": "whatsapp",
             "to": to_number,
+            "type": "text",
             "text": {
                 "body": "Lo siento, no entiendo tu mensaje. ¿Podrías reformularlo?"
             }
         }
+        
     data = json.dumps(data)
 
     headers = {
@@ -138,7 +141,7 @@ def send_message_whatsapp(txt_message, to_number):
         print(response.status,response.reason)
 
     except Exception as e:
-        add_message_log((json.dumps(e)))
+        add_message_log(json.dumps(e))
 
     finally:
         connection.close()
