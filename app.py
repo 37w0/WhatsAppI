@@ -103,7 +103,7 @@ def sand_message_whatsapp(txt_message, to_number):
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
-            "to": "525515067163",
+            "to": to_number,
             "type": "text",
             "text": {
                 "preview_url": True,
