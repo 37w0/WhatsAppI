@@ -87,11 +87,11 @@ def receiveMessage(req):
                 if "text" in messages:
                     text_message = messages['text']['body']
                     from_number = messages['from']
-                    message_id = messages['id']
+                    #message_id = messages['id']
 
                     add_message_log(json.dumps(text_message))
                     add_message_log(json.dumps(from_number))
-                    add_message_log(json.dumps(message_id))
+                    #add_message_log(json.dumps(message_id))
 
                     # log_entry = {
                     #     'from': from_number,
@@ -99,8 +99,6 @@ def receiveMessage(req):
                     #     'text': text
                     # }
                     # add_message_log(json.dumps(log_entry))
-
-        
 
         return jsonify({'message': 'EVENT_RECEIVED'}), 200
     except Exception as e:
@@ -129,7 +127,7 @@ def send_message_whatsapp(txt_message, to_number):
 
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer EAAkZAQZCGei9QBP58eL5VQSsuJQSpGJqqlpLXyUIcMaCBOTOchXepUi5d86niDHNMzLwPRwmgo03yK7qiEDNTLYHHuj0fAxOHwrPQH0MZAmdha28hraRKk8hmPVaH3CFZAjtoSu1mwNLKK86uPCILDlArorkX3be2FBQN1ghtULZA2ChnnLKySlgzZBrjsLAm8EOgTovxEp9EY1BVyuuRt4vtOEEKFJ5QZAC597qmhwEous'
+        'Authorization': 'Bearer EAAkZAQZCGei9QBP4uwfv9rGgPk8mrkit7AxX1bBIZB4bQ3HInznU6tQGIPf565FVa7xHvnTerTr6CYiZCURiGZBwCY6byFSF4ADUxQxB9ZBqNB8Khu9ZC2AU1hwlJpyx5H3MzixVIO5faOHBBsl4C9zRIlvwkad7TN0xFnnc5O2tl7aYS3Wt6BkmFiLskmqDnnlOhZC0dUDcaUOJEuR9NCLZA1v3CAzvrGMB6LB1eayuEWcPB'
     }
 
     connection = http.client.HTTPSConnection('graph.facebook.com')
