@@ -87,18 +87,11 @@ def receiveMessage(req):
                 if "text" in messages:
                     text_message = messages['text']['body']
                     from_number = messages['from']
-                    #message_id = messages['id']
 
                     add_message_log(json.dumps(text_message))
                     add_message_log(json.dumps(from_number))
-                    #add_message_log(json.dumps(message_id))
-
-                    # log_entry = {
-                    #     'from': from_number,
-                    #     'message_id': message_id,
-                    #     'text': text
-                    # }
-                    # add_message_log(json.dumps(log_entry))
+                    send_message_whatsapp(text_message, from_number)
+  
 
         return jsonify({'message': 'EVENT_RECEIVED'}), 200
     except Exception as e:
@@ -125,7 +118,7 @@ def send_message_whatsapp(txt_message, to_number):
                 "body": "Lo siento, no entiendo tu mensaje. ¿Podrías reformularlo?"
             }
         }
-        
+
     data = json.dumps(data)
 
     headers = {
