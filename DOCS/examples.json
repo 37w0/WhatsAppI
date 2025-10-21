@@ -1,0 +1,39 @@
+{
+    "object": "whatsapp_business_account",
+    "entry": [
+        {
+            "id": "1323774456115082",
+            "changes": [
+                {
+                    "value": {
+                        "messaging_product": "whatsapp",
+                        "metadata": {
+                            "display_phone_number": "15556338027",
+                            "phone_number_id": "827599870434160"
+                        },
+                        "contacts": [
+                            {
+                                "profile": {
+                                    "name": "Sandbox"
+                                },
+                                "wa_id": "5215515067163"
+                            }
+                        ],
+                        "messages": [
+                            {
+                                "from": "5215515067163",
+                                "id": "wamid.HBgNNTIxNTUxNTA2NzE2MxUCABIYFDJBOTI1OUNEMUJEQTZCNTY1QzY4AA==",
+                                "timestamp": "1761073575",
+                                "text": {
+                                    "body": "Tu tienes una maleta peque\u00f1a"
+                                },
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    "field": "messages"
+                }
+            ]
+        }
+    ]
+}
