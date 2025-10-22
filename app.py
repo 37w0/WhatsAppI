@@ -162,7 +162,7 @@ def sand_message_whatsapp(txt_message, to_number):
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
-            "to": "<WHATSAPP_USER_PHONE_NUMBER>",
+            "to": to_number,
             "type": "interactive",
             "interactive": {
                 "type": "list",
