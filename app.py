@@ -77,9 +77,11 @@ def receiveMessage(req):
             if "type" in messages:
                 message_type = messages["type"]
 
-                add_message_log(json.dumps(messages))
+                #Guardar el tipo de mensaje en el log
+                add_message_log(json.dumps(message_type))
 
                 if message_type == "interactive":
+
                     return 0
                 
                 if "text" in messages:
@@ -88,9 +90,8 @@ def receiveMessage(req):
                     from_number = from_number.replace("521", "+52")
 
                     sand_message_whatsapp(text_message, from_number)
-                    # add_message_log(json.dumps(text_message))
-                    # add_message_log(json.dumps(from_number))
 
+                    #Guardar el mensaje recibido en el log
                     add_message_log(json.dumps(messages))
 
         return jsonify({'message': 'EVENT_RECEIVED'}), 200
@@ -110,6 +111,47 @@ def sand_message_whatsapp(txt_message, to_number):
                 "preview_url": True,
                 "body": "Respuesta automatica: Hola, ¿en qué puedo ayudarte?"
                 }
+        }
+    elif "ayuda" in txt_message:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": to_number,
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {
+                    "text": "Selecciona una opción de ayuda:"
+                },
+                "footer": {
+                    "text": "Soporte"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "btnMarcaAdictt",
+                                "title": "Adictt"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "btnMarcaDomarts",
+                                "title": "Domarts"
+                            }
+                        },
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "btnMarcaConverse",
+                                "title": "Corporativo"
+                            }
+                        }
+                    ]
+                }
+            }
         }
     else:
         data = {
