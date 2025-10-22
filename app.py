@@ -160,7 +160,7 @@ def sand_message_whatsapp(txt_message, to_number):
                 }
             }
         }
-    elif "btnCoAdictt" in txt_message:
+    elif "btncoadictt" in txt_message:
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -176,7 +176,7 @@ def sand_message_whatsapp(txt_message, to_number):
                 },
                 "action": {
                     "button": "Ver opciones",
-                    "section": [
+                    "sections": [
                         {
                             "title": "Boutiques Adictt",
                             "rows": [
