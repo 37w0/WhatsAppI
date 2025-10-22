@@ -87,9 +87,9 @@ def receiveMessage(req):
                         from_number = messages["from"]
                         from_number = from_number.replace("521", "+52")
 
-                        add_message_log(json.dumps(messages))
-                        add_message_log(json.dumps(text_message))
-                        add_message_log(json.dumps(from_number))
+                        # add_message_log(json.dumps(messages))
+                        # add_message_log(json.dumps(text_message))
+                        # add_message_log(json.dumps(from_number))
 
                         sand_message_whatsapp(text_message, from_number)
 
@@ -163,7 +163,7 @@ def sand_message_whatsapp(txt_message, to_number):
                 }
             }
         }
-    elif "adictt" in txt_message:
+    elif "btnCoAdictt" in txt_message:
         data = {
             "messaging_product": "whatsapp",
             "to": to_number,
@@ -201,67 +201,67 @@ def sand_message_whatsapp(txt_message, to_number):
                                 {
                                     "id": "btnAdicttOUCH",
                                     "title": "MULTIBRAN OUTLET CHALCO CENTRO"
-                                },
-                                {
-                                    "id": "btnAdicttCHAL",
-                                    "title": "MULTIBRAN OUTLET CHALCO"
-                                },
-                                {
-                                    "id": "btnAdicttOURG",
-                                    "title": "MULTIBRAN OUTLET ARAGON"
-                                },
-                                {
-                                    "id": "btnAdicttOTEP",
-                                    "title": "MULTIBRAN OUTLET TEPOZAN"
-                                },
-                                {
-                                    "id": "btnAdicttTEXC",
-                                    "title": "MULTIBRAN OUTLET TEXOCOCO"
-                                },
-                                {
-                                    "id": "btnAdicttOGPT",
-                                    "title": "MULTIBRAN OUTLET GRAN PATIO TEXCOCO"
-                                },
-                                {
-                                    "id": "btnAdicttCOAC",
-                                    "title": "MULTIBRAN OUTLET COACALCO"
-                                },
-                                {
-                                    "id": "btnAdicttTECA",
-                                    "title": "MULTIBRAN OUTLET TECAMAC"
-                                },
-                                {
-                                    "id": "btnAdicttGSUR",
-                                    "title": "MULTIBRAND GRAN SUR"
-                                },
-                                {
-                                    "id": "btnAdicttOURO",
-                                    "title": "MULTIBRAND OUTLET ROSARIO"
-                                },
-                                {
-                                    "id": "btnAdicttERMI",
-                                    "title": "MULTIBRAND ERMITA"
-                                },
-                                {
-                                    "id": "btnAdicttCUER",
-                                    "title": "MULTIBRAND OUTLET CUERNAVACA"
-                                },
-                                {
-                                    "id": "btnAdicttOUJY",
-                                    "title": "MULTIBRAND OUTLET LA JOYA"
-                                },
-                                {
-                                    "id": "btnAdicttVIGA",
-                                    "title": "MULTIBRAND LA VIGA"
-                                },
-                                {
-                                    "id": "btnAdicttOTEX",
-                                    "title": "MULTIBRAND OUTLET TEXCOCO CENTRO"
-                                },
-                                {
-                                    "id": "btnAdicttMBME",
-                                    "title": "MULTIBRAND OUTLET MARIANO ESCOBEDO"
-                                }
+                                }#,
+                                # {
+                                #     "id": "btnAdicttCHAL",
+                                #     "title": "MULTIBRAN OUTLET CHALCO"
+                                # },
+                                # {
+                                #     "id": "btnAdicttOURG",
+                                #     "title": "MULTIBRAN OUTLET ARAGON"
+                                # },
+                                # {
+                                #     "id": "btnAdicttOTEP",
+                                #     "title": "MULTIBRAN OUTLET TEPOZAN"
+                                # },
+                                # {
+                                #     "id": "btnAdicttTEXC",
+                                #     "title": "MULTIBRAN OUTLET TEXOCOCO"
+                                # },
+                                # {
+                                #     "id": "btnAdicttOGPT",
+                                #     "title": "MULTIBRAN OUTLET GRAN PATIO TEXCOCO"
+                                # },
+                                # {
+                                #     "id": "btnAdicttCOAC",
+                                #     "title": "MULTIBRAN OUTLET COACALCO"
+                                # },
+                                # {
+                                #     "id": "btnAdicttTECA",
+                                #     "title": "MULTIBRAN OUTLET TECAMAC"
+                                # },
+                                # {
+                                #     "id": "btnAdicttGSUR",
+                                #     "title": "MULTIBRAND GRAN SUR"
+                                # },
+                                # {
+                                #     "id": "btnAdicttOURO",
+                                #     "title": "MULTIBRAND OUTLET ROSARIO"
+                                # },
+                                # {
+                                #     "id": "btnAdicttERMI",
+                                #     "title": "MULTIBRAND ERMITA"
+                                # },
+                                # {
+                                #     "id": "btnAdicttCUER",
+                                #     "title": "MULTIBRAND OUTLET CUERNAVACA"
+                                # },
+                                # {
+                                #     "id": "btnAdicttOUJY",
+                                #     "title": "MULTIBRAND OUTLET LA JOYA"
+                                # },
+                                # {
+                                #     "id": "btnAdicttVIGA",
+                                #     "title": "MULTIBRAND LA VIGA"
+                                # },
+                                # {
+                                #     "id": "btnAdicttOTEX",
+                                #     "title": "MULTIBRAND OUTLET TEXCOCO CENTRO"
+                                # },
+                                # {
+                                #     "id": "btnAdicttMBME",
+                                #     "title": "MULTIBRAND OUTLET MARIANO ESCOBEDO"
+                                # }
                             ]
                         }
                     ]
@@ -284,7 +284,7 @@ def sand_message_whatsapp(txt_message, to_number):
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer EAAkZAQZCGei9QBPxMIelnghky2ZB9IzFTw6SWAkOrRcEmgZCE4NX7LPR8Bq7XZBTT6WEIKQg08U9WK8GCXaZAmGZAVoZA7fnBCqzm1RyV4KePPfGEAfbcqg02Op0JPyylxELp89UOR0dP0lgy7DlkZCCCbLjM88HkZA42Lfz9ktIOPCzO8PcpEE0Dy402k8g6Pa0OhaAhlnZBZBhyecz2KyhfmJtVUZCz4vT1mAahIRsdXgZAnpZAyQ"
+        "Authorization": "Bearer EAAkZAQZCGei9QBPzDZC8WG8uZBHO7UvBZCST8kkWH5y2ExzLNNxLHCGS9lbFI7ldVvww5XZCZCDBX2w6kTTTpH9GOPTMdMjZBXonMv7OhBUyTXEDJHb5tJCKEAZAr7zuje1z4k3WDDCQj0JbL3dSZCx6Kq8d4l0aVMq6jv1wp6K6itcycxJAhnXcKnjXwy3gYZCAD4GZBMnI4uZCJJrEvvycWWvXu9ZA6vbsER45xAL3HGBpI4kbgZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
