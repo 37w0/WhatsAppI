@@ -163,7 +163,7 @@ def sand_message_whatsapp(txt_message, to_number):
                 }
             }
         }
-    elif "btnCoAdictt" in txt_message:
+    elif "btncoadictt" in txt_message:
         data = {
             "messaging_product": "whatsapp",
             "to": to_number,
