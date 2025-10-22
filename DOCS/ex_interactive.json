@@ -1,0 +1,17 @@
+{
+    "context": {
+        "from": "15556338027",
+        "id": "wamid.HBgNNTIxNTUxNTA2NzE2MxUCABEYEkI4MUFBRkY0NTRBRjRFNUYwMAA="
+    },
+    "from": "5215515067163",
+    "id": "wamid.HBgNNTIxNTUxNTA2NzE2MxUCABIYFDJBNEUwRDhFQTYxMTBFMjA0NjYzAA==",
+    "timestamp": "1761163308",
+    "type": "interactive",
+    "interactive": {
+        "type": "button_reply",
+        "button_reply": {
+            "id": "btnCoAdictt",
+            "title": "Adictt"
+        }
+    }
+}

@@ -81,8 +81,15 @@ def receiveMessage(req):
                 add_message_log(json.dumps(messages))
 
                 if message_type == "interactive":
+                    interactive_type = messages["interactive"]["type"]
+                    if interactive_type == "button_reply":
+                        text_message = messages["interactive"]["button_reply"]["id"]
+                        from_number = messages["from"]
+                        from_number = from_number.replace("521", "+52")
 
-                    return 0
+                        sand_message_whatsapp(text_message, from_number)
+
+
                 
                 if "text" in messages:
                     text_message = messages["text"]["body"]
@@ -148,6 +155,111 @@ def sand_message_whatsapp(txt_message, to_number):
                                 "id": "btnCoConverse",
                                 "title": "Corporativo"
                             }
+                        }
+                    ]
+                }
+            }
+        }
+    elif "btnCoAdictt" in txt_message:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": to_number,
+            "type": "interactive",
+            "interactive": {
+                "type": "list",
+                "body": {
+                    "text": "Elige una de las siguientes opciones:"
+                },
+                "footer": {
+                    "text": "¿De que boutique nos estás contactando?"
+                },
+                "action": {
+                    "section": [
+                        {
+                            "title": "Boutiques Adictt",
+                            "rows": [
+                                {
+                                    "id": "btnAdicttOUGC",
+                                    "title": "MULTIBRAND OUTLET GUADALAJARA CENTRO"
+                                },
+                                {
+                                    "id": "btnAdicttARAG",
+                                    "title": "MULTIBRAND ARAGON"
+                                },
+                                {
+                                    "id": "btnAdicttMBCY",
+                                    "title": "MULTIBRAND COYOACAN"
+                                },
+                                {
+                                    "id": "btnAdicttBUEN",
+                                    "title": "MULTIBRAND BUENAVISTA"
+                                },
+                                {
+                                    "id": "btnAdicttOUCH",
+                                    "title": "MULTIBRAN OUTLET CHALCO CENTRO"
+                                },
+                                {
+                                    "id": "btnAdicttCHAL",
+                                    "title": "MULTIBRAN OUTLET CHALCO"
+                                },
+                                {
+                                    "id": "btnAdicttOURG",
+                                    "title": "MULTIBRAN OUTLET ARAGON"
+                                },
+                                {
+                                    "id": "btnAdicttOTEP",
+                                    "title": "MULTIBRAN OUTLET TEPOZAN"
+                                },
+                                {
+                                    "id": "btnAdicttTEXC",
+                                    "title": "MULTIBRAN OUTLET TEXOCOCO"
+                                },
+                                {
+                                    "id": "btnAdicttOGPT",
+                                    "title": "MULTIBRAN OUTLET GRAN PATIO TEXCOCO"
+                                },
+                                {
+                                    "id": "btnAdicttCOAC",
+                                    "title": "MULTIBRAN OUTLET COACALCO"
+                                },
+                                {
+                                    "id": "btnAdicttTECA",
+                                    "title": "MULTIBRAN OUTLET TECAMAC"
+                                },
+                                {
+                                    "id": "btnAdicttGSUR",
+                                    "title": "MULTIBRAND GRAN SUR"
+                                },
+                                {
+                                    "id": "btnAdicttOURO",
+                                    "title": "MULTIBRAND OUTLET ROSARIO"
+                                },
+                                {
+                                    "id": "btnAdicttERMI",
+                                    "title": "MULTIBRAND ERMITA"
+                                },
+                                {
+                                    "id": "btnAdicttCUER",
+                                    "title": "MULTIBRAND OUTLET CUERNAVACA"
+                                },
+                                {
+                                    "id": "btnAdicttOUJY",
+                                    "title": "MULTIBRAND OUTLET LA JOYA"
+                                },
+                                {
+                                    "id": "btnAdicttVIGA",
+                                    "title": "MULTIBRAND LA VIGA"
+                                },
+                                {
+                                    "id": "btnAdicttOTEX",
+                                    "title": "MULTIBRAND OUTLET TEXCOCO CENTRO"
+                                },
+                                {
+                                    "id": "btnAdicttMBME",
+                                    "title": "MULTIBRAND OUTLET MARIANO ESCOBEDO"
+                                }
+                            ]
                         }
                     ]
                 }
