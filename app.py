@@ -175,6 +175,7 @@ def sand_message_whatsapp(txt_message, to_number):
                     "text": "¿De que boutique nos estás contactando?"
                 },
                 "action": {
+                    "button": "Ver opciones",
                     "section": [
                         {
                             "title": "Boutiques Adictt",
