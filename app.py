@@ -78,7 +78,7 @@ def receiveMessage(req):
                 message_type = messages["type"]
 
                 #Guardar el tipo de mensaje en el log
-                add_message_log(json.dumps(message_type))
+                add_message_log(json.dumps(messages))
 
                 if message_type == "interactive":
 
@@ -121,10 +121,10 @@ def sand_message_whatsapp(txt_message, to_number):
             "interactive": {
                 "type": "button",
                 "body": {
-                    "text": "Selecciona una opción de ayuda:"
+                    "text": "Elige una de las siguientes opciones:"
                 },
                 "footer": {
-                    "text": "Soporte"
+                    "text": "¿De que empresa necesitas soporte?"
                 },
                 "action": {
                     "buttons": [
