@@ -82,7 +82,7 @@ def receiveMessage(req):
                 if message_type == "interactive":
                     interactive_type = messages["interactive"]["type"]
                     if interactive_type == "button_reply":
-                        text_message = messages["interactive"]["button_reply"]["id"]
+                        text_message = messages["interactive"]["button_reply"]["title"]
                         from_number = messages["from"]
                         from_number = from_number.replace("521", "+52")
 
@@ -158,7 +158,7 @@ def sand_message_whatsapp(txt_message, to_number):
                 }
             }
         }
-    elif "btnCoAdictt" in txt_message:
+    elif "adictt" in txt_message:
         data = {
             "messaging_product": "whatsapp",
             "to": to_number,
