@@ -56,7 +56,6 @@ def webhook():
 def verifyToken(req):
         token = req.args.get('hub.verify_token')
         challenge = req.args.get('hub.challenge')
-        #print(f"Token recibido: {token}, Challenge recibido: {challenge}")
 
         if challenge and token == TOKENAPP:
             return challenge
@@ -86,10 +85,6 @@ def receiveMessage(req):
                         text_message = messages["interactive"]["button_reply"]["id"]
                         from_number = messages["from"]
                         from_number = from_number.replace("521", "+52")
-
-                        # add_message_log(json.dumps(messages))
-                        # add_message_log(json.dumps(text_message))
-                        # add_message_log(json.dumps(from_number))
 
                         sand_message_whatsapp(text_message, from_number)
 
@@ -163,7 +158,7 @@ def sand_message_whatsapp(txt_message, to_number):
                 }
             }
         }
-    elif "btncoadictt" in txt_message:
+    elif "btnCoAdictt" in txt_message:
         data = {
             "messaging_product": "whatsapp",
             "to": to_number,
@@ -178,7 +173,7 @@ def sand_message_whatsapp(txt_message, to_number):
                 },
                 "action": {
                     "button": "Ver opciones",
-                    "section": [
+                    "sections": [
                         {
                             "title": "Boutiques Adictt",
                             "rows": [
