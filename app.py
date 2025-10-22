@@ -131,21 +131,21 @@ def sand_message_whatsapp(txt_message, to_number):
                         {
                             "type": "reply",
                             "reply": {
-                                "id": "btnMarcaAdictt",
+                                "id": "btnCoAdictt",
                                 "title": "Adictt"
                             }
                         },
                         {
                             "type": "reply",
                             "reply": {
-                                "id": "btnMarcaDomarts",
+                                "id": "btnCoDomarts",
                                 "title": "Domarts"
                             }
                         },
                         {
                             "type": "reply",
                             "reply": {
-                                "id": "btnMarcaConverse",
+                                "id": "btnCoConverse",
                                 "title": "Corporativo"
                             }
                         }
