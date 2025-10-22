@@ -158,107 +158,39 @@ def sand_message_whatsapp(txt_message, to_number):
                 }
             }
         }
-    elif "adictt" in txt_message:
+    elif "adict" in txt_message:
         data = {
             "messaging_product": "whatsapp",
-            "to": to_number,
+            "recipient_type": "individual",
+            "to": "<WHATSAPP_USER_PHONE_NUMBER>",
             "type": "interactive",
             "interactive": {
                 "type": "list",
+                "header": {
+                    "type": "text",
+                    "text": "<MESSAGE_HEADER_TEXT>"
+                },
                 "body": {
-                    "text": "Elige una de las siguientes opciones:"
+                    "text": "<MESSAGE_BODY_TEXT>"
                 },
                 "footer": {
-                    "text": "¿De que boutique nos estás contactando?"
+                    "text": "<MESSAGE_FOOTER_TEXT>"
                 },
                 "action": {
-                    "button": "Ver opciones",
+                    "button": "<BUTTON_TEXT>",
                     "sections": [
                         {
-                            "title": "Boutiques Adictt",
+                            "title": "<SECTION_TITLE_TEXT>",
                             "rows": [
                                 {
-                                    "id": "btnAdicttOUGC",
-                                    "title": "MULTIBRAND OUTLET GUADALAJARA CENTRO"
-                                },
-                                {
-                                    "id": "btnAdicttARAG",
-                                    "title": "MULTIBRAND ARAGON"
-                                },
-                                {
-                                    "id": "btnAdicttMBCY",
-                                    "title": "MULTIBRAND COYOACAN"
-                                },
-                                {
-                                    "id": "btnAdicttBUEN",
-                                    "title": "MULTIBRAND BUENAVISTA"
-                                },
-                                {
-                                    "id": "btnAdicttOUCH",
-                                    "title": "MULTIBRAN OUTLET CHALCO CENTRO"
-                                }#,
-                                # {
-                                #     "id": "btnAdicttCHAL",
-                                #     "title": "MULTIBRAN OUTLET CHALCO"
-                                # },
-                                # {
-                                #     "id": "btnAdicttOURG",
-                                #     "title": "MULTIBRAN OUTLET ARAGON"
-                                # },
-                                # {
-                                #     "id": "btnAdicttOTEP",
-                                #     "title": "MULTIBRAN OUTLET TEPOZAN"
-                                # },
-                                # {
-                                #     "id": "btnAdicttTEXC",
-                                #     "title": "MULTIBRAN OUTLET TEXOCOCO"
-                                # },
-                                # {
-                                #     "id": "btnAdicttOGPT",
-                                #     "title": "MULTIBRAN OUTLET GRAN PATIO TEXCOCO"
-                                # },
-                                # {
-                                #     "id": "btnAdicttCOAC",
-                                #     "title": "MULTIBRAN OUTLET COACALCO"
-                                # },
-                                # {
-                                #     "id": "btnAdicttTECA",
-                                #     "title": "MULTIBRAN OUTLET TECAMAC"
-                                # },
-                                # {
-                                #     "id": "btnAdicttGSUR",
-                                #     "title": "MULTIBRAND GRAN SUR"
-                                # },
-                                # {
-                                #     "id": "btnAdicttOURO",
-                                #     "title": "MULTIBRAND OUTLET ROSARIO"
-                                # },
-                                # {
-                                #     "id": "btnAdicttERMI",
-                                #     "title": "MULTIBRAND ERMITA"
-                                # },
-                                # {
-                                #     "id": "btnAdicttCUER",
-                                #     "title": "MULTIBRAND OUTLET CUERNAVACA"
-                                # },
-                                # {
-                                #     "id": "btnAdicttOUJY",
-                                #     "title": "MULTIBRAND OUTLET LA JOYA"
-                                # },
-                                # {
-                                #     "id": "btnAdicttVIGA",
-                                #     "title": "MULTIBRAND LA VIGA"
-                                # },
-                                # {
-                                #     "id": "btnAdicttOTEX",
-                                #     "title": "MULTIBRAND OUTLET TEXCOCO CENTRO"
-                                # },
-                                # {
-                                #     "id": "btnAdicttMBME",
-                                #     "title": "MULTIBRAND OUTLET MARIANO ESCOBEDO"
-                                # }
+                                    "id": "<ROW_ID>",
+                                    "title": "<ROW_TITLE_TEXT>",
+                                    "description": "<ROW_DESCRIPTION_TEXT>"
+                                }
+                                #<!-- Additional rows would go here -->
                             ]
                         }
+                        #<!-- Additional sections would go here -->
                     ]
                 }
             }
