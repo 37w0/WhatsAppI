@@ -87,9 +87,11 @@ def receiveMessage(req):
                         from_number = messages["from"]
                         from_number = from_number.replace("521", "+52")
 
-                        sand_message_whatsapp(text_message, from_number)
                         add_message_log(json.dumps(messages))
+                        add_message_log(json.dumps(text_message))
+                        add_message_log(json.dumps(from_number))
 
+                        sand_message_whatsapp(text_message, from_number)
 
                 
                 if "text" in messages:
